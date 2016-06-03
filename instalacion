@@ -24,6 +24,8 @@ sudo chmod 775 ardupilot
 
 sudo chmod 775 video
 
+sudo chmod 775 temp.py
+
 sudo systemctl daemon-reload
 
 sudo systemctl enable video
