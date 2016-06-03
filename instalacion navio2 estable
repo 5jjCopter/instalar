@@ -1,9 +1,7 @@
 #!/bin/sh
 
-sudo wget 'https://files.emlid.com/apm/apm-navio2_3.3.2-rc2-beta-1.2_armhf.deb' -O-apm navio2 .deb 
-sudo dpkg - i APM-navio2 .deb
-
-sudo dpkg -i apm.deb
+sudo wget 'https://files.emlid.com/apm/apm-navio2_3.3.2-rc2-beta-1.2_armhf.deb' -O apm-navio2.deb
+sudo dpkg -i apm-navio2.deb
 
 sudo wget https://github.com/5jjCopter/navio/archive/master.zip
 
