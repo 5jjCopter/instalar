@@ -1,0 +1,33 @@
+#!/bin/sh
+
+sudo wget 'https://files.emlid.com/apm/apm.deb' -O apm.deb
+
+sudo dpkg -i apm.deb
+
+sudo wget https://github.com/5jjCopter/navio/archive/master.zip
+
+sudo unzip master.zip
+
+cd navio-master
+
+sudo cp ardupilot.service /lib/systemd/system
+
+sudo cp video.service /lib/systemd/system
+
+sudo cp ardupilot /home/pi
+
+sudo cp video /home/pi
+
+cd /home/pi
+
+sudo chmod 775 ardupilot
+
+sudo chmod 775 video
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable video
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable ardupilot
