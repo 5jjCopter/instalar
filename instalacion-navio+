@@ -33,3 +33,12 @@ sudo systemctl enable video
 sudo systemctl daemon-reload
 
 sudo systemctl enable ardupilot
+
+cd
+
+sudo rm master.zip
+
+sudo reboot
+
+do
+
