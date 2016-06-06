@@ -40,6 +40,8 @@ cd
 
 sudo rm master.zip
 
+cd
+
 sudo reboot
 
 do
