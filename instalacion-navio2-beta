@@ -17,6 +17,8 @@ sudo cp ardupilot /home/pi
 
 sudo cp video /home/pi
 
+sudo cp temp.py /home/pi
+
 cd /home/pi
 
 sudo chmod 775 ardupilot
