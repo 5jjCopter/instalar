@@ -42,9 +42,9 @@ sudo rm master.zip
 
 cd
 
-sudo apt-get update && sudo apt-get dist-upgrade
+sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get install apm-navio-beta
 
 sudo reboot
 
-do
+cd
 
