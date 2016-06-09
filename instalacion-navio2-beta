@@ -25,6 +25,8 @@ sudo chmod 775 ardupilot
 
 sudo chmod 775 video
 
+sudo chmod 775 actualizacion2
+
 sudo chmod 775 temp.py
 
 sudo systemctl daemon-reload
@@ -41,7 +43,7 @@ sudo rm master.zip
 
 cd
 
-sudo apt-get update && sudo apt-get dist-upgrade
+sudo ./actualizacion2
 
 sudo reboot
 
