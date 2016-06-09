@@ -18,6 +18,8 @@ sudo cp ardupilot /home/pi
 
 sudo cp video /home/pi
 
+sudo cp actualizacion /home/pi
+
 sudo cp temp.py /home/pi
 
 cd /home/pi
@@ -28,7 +30,7 @@ sudo chmod 775 video
 
 sudo chmod 775 temp.py
 
-sudo chmod 775 actualizacion+
+sudo chmod 775 actualizacion
 
 sudo systemctl daemon-reload
 
@@ -44,7 +46,7 @@ sudo rm master.zip
 
 cd
 
-sudo ./actualizacion+
+sudo ./actualizacion
 
 sudo reboot
 
