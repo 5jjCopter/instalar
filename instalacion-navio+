@@ -28,6 +28,8 @@ sudo chmod 775 video
 
 sudo chmod 775 temp.py
 
+sudo chmod 775 actualizacion+
+
 sudo systemctl daemon-reload
 
 sudo systemctl enable video
@@ -42,7 +44,7 @@ sudo rm master.zip
 
 cd
 
-sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get install apm-navio-beta
+sudo ./actualizacion+
 
 sudo reboot
 
