@@ -6,6 +6,8 @@ sudo unzip master.zip
 
 cd navio-master
 
+sudo chmod 775 interfaces
+
 sudo cp ardupilot.service /lib/systemd/system
 
 sudo cp video.service /lib/systemd/system
@@ -22,13 +24,9 @@ cd /etc/network
 
 sudo rm interfaces
 
-cd navio-master
+cd /home/pi/navio-master
 
 sudo cp interfaces /etc/network
-
-cd /etc/network
-
-sudo chmod 775 interfaces
 
 cd /home/pi
 
