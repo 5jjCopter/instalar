@@ -1,9 +1,5 @@
 #!/bin/sh
 
-sudo apt-get update && sudo apt-get install apm-navio2
-
-cd
-
 sudo wget https://github.com/5jjCopter/navio/archive/master.zip
 
 sudo unzip master.zip
@@ -41,6 +37,8 @@ sudo systemctl daemon-reload
 sudo systemctl enable ardupilot
 
 cd
+
+sudo ./actualizacion2
 
 sudo rm master.zip
 
