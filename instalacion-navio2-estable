@@ -40,10 +40,6 @@ cd
 
 sudo ./actualizacion2
 
-sudo rm master.zip
 
-sudo rm -rf navio-master
-
-sudo reboot
 
 
