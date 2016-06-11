@@ -1,0 +1,27 @@
+sudo wget https://github.com/5jjCopter/navio/archive/master.zip
+
+sudo unzip master.zip
+
+cd navio-master
+
+sudo chmod 775 interfaces
+
+sudo chmod 775 video
+
+sudo cp video /home/pi
+
+sudo cp video.service /lib/systemd/system
+
+sudo cp interfaces /etc/network
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable video
+
+cd
+
+sudo rm master.zip
+
+sudo rm -rf navio-master
+
+sudo reboot
