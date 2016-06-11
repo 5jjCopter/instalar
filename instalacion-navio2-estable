@@ -18,6 +18,18 @@ sudo cp temp.py /home/pi
 
 sudo cp actualizacion2 /home/pi
 
+cd /etc/network
+
+sudo rm interfaces
+
+cd navio-master
+
+sudo cp interfaces /etc/network
+
+cd /etc/network
+
+sudo chmod 775 interfaces
+
 cd /home/pi
 
 sudo chmod 775 ardupilot
