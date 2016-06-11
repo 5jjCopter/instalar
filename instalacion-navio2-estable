@@ -1,17 +1,12 @@
 #!/bin/sh
 
+sudo apt-get update && sudo apt-get install apm-navio2
 
 sudo wget https://github.com/5jjCopter/navio/archive/master.zip
 
 sudo unzip master.zip
 
 cd navio-master
-
-sudo cp actualizacion2 /home/pi
-
-sudo chmod 775 actualizacion2
-
-sudo ./actualizacion2
 
 sudo cp ardupilot.service /lib/systemd/system
 
@@ -23,6 +18,8 @@ sudo cp video /home/pi
 
 sudo cp temp.py /home/pi
 
+sudo cp actualizacion2 /home/pi
+
 cd /home/pi
 
 sudo chmod 775 ardupilot
@@ -30,6 +27,8 @@ sudo chmod 775 ardupilot
 sudo chmod 775 video
 
 sudo chmod 775 temp.py
+
+sudo chmod 775 actualizacion2
 
 sudo systemctl daemon-reload
 
@@ -42,8 +41,6 @@ sudo systemctl enable ardupilot
 cd
 
 sudo rm master.zip
-
-cd
 
 sudo rm -rf navio-master
 
