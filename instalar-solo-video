@@ -8,9 +8,13 @@ sudo chmod 775 interfaces
 
 sudo chmod 775 video
 
-sudo cp video /home/pi
+sudo chmod 775 video-mobil
+
+sudo cp video-mobil /home/pi
 
 sudo cp video.service /lib/systemd/system
+
+sudo cp video-mobil.service /lib/systemd/system
 
 sudo cp interfaces /etc/network
 
