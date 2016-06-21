@@ -12,9 +12,17 @@ sudo chmod 775 video-mobil
 
 sudo cp video-mobil /home/pi
 
+sudo cp video /home/pi
+
 sudo cp video.service /lib/systemd/system
 
 sudo cp video-mobil.service /lib/systemd/system
+
+cd /etc/network
+
+sudo rm interfaces
+
+cd /home/pi/navio-master
 
 sudo cp interfaces /etc/network
 
