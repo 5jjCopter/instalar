@@ -20,6 +20,8 @@ sudo cp temp.py /home/pi
 
 sudo cp actualizacion2 /home/pi
 
+sudo cp mavproxy.sh /home/pi
+
 cd /etc/network
 
 sudo rm interfaces
@@ -38,6 +40,8 @@ sudo chmod 775 temp.py
 
 sudo chmod 775 actualizacion2
 
+sudo chmod 775 mavproxy.sh
+
 sudo systemctl daemon-reload
 
 sudo systemctl enable video
@@ -47,6 +51,8 @@ sudo systemctl daemon-reload
 sudo systemctl enable ardupilot
 
 sudo ./actualizacion2
+
+sudo ./mavproxy.sh
 
 sudo reboot
 
