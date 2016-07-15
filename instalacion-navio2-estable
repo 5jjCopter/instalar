@@ -18,7 +18,7 @@ sudo cp video /home/pi
 
 sudo cp temp.py /home/pi
 
-sudo cp actualizacion2 /home/pi
+sudo cp actualizacion-navio2.sh /home/pi
 
 sudo cp mavproxy.sh /home/pi
 
@@ -38,7 +38,7 @@ sudo chmod 775 video
 
 sudo chmod 775 temp.py
 
-sudo chmod 775 actualizacion2
+sudo chmod 775 actualizacion-navio2.sh
 
 sudo chmod 775 mavproxy.sh
 
@@ -50,7 +50,7 @@ sudo systemctl daemon-reload
 
 sudo systemctl enable ardupilot
 
-sudo ./actualizacion2
+sudo ./actualizacion-navio2.sh
 
 sudo ./mavproxy.sh
 
