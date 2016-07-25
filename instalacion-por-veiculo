@@ -16,18 +16,23 @@ cd navio-master
 
 sudo chmod 775 interfaces
 
+sudo chmod 775 actualizacion2.sh
+
 sudo cp actualizacion2.sh /home/pi
 
 cd /etc/network
 
 sudo rm interfaces
 
-cd /home/pi/navio-master
+cd
+
+cd navio-master
 
 sudo cp interfaces /etc/network
 
 cd
-cd /tipos-instalacion-master
+
+cd tipos-instalacion-master
 sudo chmod 775 permisos.sh
 sudo ./permisos.sh
 sudo ./copiar.sh
@@ -40,7 +45,7 @@ cd
 #sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-hexa
 #sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-octa
 #sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-octa-quad
-#sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-quad
+sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-quad
 #sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-tri
 #sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-y6	
 #sudo systemctl daemon-reload & sudo systemctl enable ArduPlane
