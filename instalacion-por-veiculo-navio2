@@ -41,7 +41,7 @@ sudo wget https://github.com/5jjCopter/instalar/archive/master.zip
 sudo unzip master.zip
 cd instalar-master
 sudo chmod 775 Instalar-solo-video
-sudo ./Instalar-solo-video
+sudo ./instalar-solo-video
 cd
 sudo rm master.zip
 sudo rm -rf instalar-master
