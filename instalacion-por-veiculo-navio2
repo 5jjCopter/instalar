@@ -37,6 +37,7 @@ sudo chmod 775 permisos.sh
 sudo chmod 775 copiar.sh
 sudo ./permisos.sh
 sudo ./copiar.sh
+cd
 sudo wget https://github.com/5jjCopter/instalar/archive/master.zip
 sudo unzip master.zip
 cd instalar-master
