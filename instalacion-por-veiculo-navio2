@@ -34,6 +34,7 @@ cd
 
 cd tipos-instalacion-master
 sudo chmod 775 permisos.sh
+sudo chmod 775 copiar.sh
 sudo ./permisos.sh
 sudo ./copiar.sh
 cd /home/pi/navio-master
