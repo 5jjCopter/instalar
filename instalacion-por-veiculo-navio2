@@ -37,11 +37,14 @@ sudo chmod 775 permisos.sh
 sudo chmod 775 copiar.sh
 sudo ./permisos.sh
 sudo ./copiar.sh
-cd /home/pi/navio-master
-sudo chmod 775 video
-sudo chmod 775 temp.py
-sudo chmod 775 actualizacion2.sh
+sudo wget https://github.com/5jjCopter/instalar/archive/master.zip
+sudo unzip master.zip
+cd instalar-master
+sudo chmod 775 Instalar-solo-video
+sudo ./Instalar-solo-video
 cd
+sudo rm master.zip
+sudo rm -rf instalar-master
 # QUITAR (#) DEL VEICULO QUE QUIERA INSTALAR
 
 #sudo systemctl daemon-reload & sudo systemctl enable 
