@@ -1,0 +1,475 @@
+#!/bin/bash
+
+# Program: menu for Pi
+# Written by: Dru Morgan Memphisartguy@yahoo.com
+# Written at: Midsouth Makers Hack/Make Space
+# Date: 07/22/2016
+# Description:
+#	Simple starter program to make setting up a pi
+#	very easy. Choose a option to exceute the menu
+#	function. We will include some of the more
+#	common functions for operating your Pi
+#
+#
+#	Start infinite loop .... Exit is in case x
+
+while :
+
+do
+
+#	Clear the display
+clear  
+
+#	print menu display
+cat <<++
+
+
+			Navio Plus Support Menu
+
+*** Operations ***	***APM SETUP***		***WiFi SETUP***
+
+1) Run RasPi Config	a) Download APM		m) List USB Devices
+2) Top (Task Viewer)	b) Install APM		n) List WiFi Networks
+3) Kill (Task Closer)	c) Create APM.sh	o) Connect to WiFi
+4) Run APM.sh		d) Edit APM.sh		p) Clear WiFi
+5) End APM.sh		e) Edit rc.local	r) Enable WiFi
+6) Pi Reboot Now	f) Make off-button-py	s) Disable WiFWi
+7) Pi Shutdown Now	g) Edit Cron		t) Edit WiFi Network
+
+	x) to exit
+
+++
+
+#	Prompt user for input
+echo -n "Please enter your selection $LOGNAME: "
+
+#	Set variable name selection to value of user input
+#	In this case "selection" is the variable
+read selection
+
+#	start case based on selection
+case $selection in
+
+##*** Operations ***
+##
+##1) Run RasPi Config
+##2) Top (Task Viewer)
+##3) Kill (Task Closer)
+##4) Run APM.sh
+##5) End APM.sh
+##6) Pi Reboot Now
+##7) Pi Shutdown Now
+##
+
+#	selection 1
+1)
+	clear
+	sudo raspi-config
+	;;
+
+# 	selection 2 Top task viewer for collecting PID
+2)
+	clear
+	echo "Running top please press q to exit"
+	sleep 2s
+	top
+	;;
+
+#	selection 3 Kill to end a task by PID
+3)
+	clear
+	echo "please enter the PID for the task to end"
+	read kill
+	sudo kill $kill
+	;;
+
+#	selection 4 manually lanuch APM.sh
+4)
+	clear
+	echo "Executing APM.sh"
+	sudo $HOME/APM.sh &
+	;;
+
+#	selection 5 End APM
+5)
+	clear
+	echo "Ending APM..."
+	sleep 1s
+		sudo kill $(ps aux | grep '[A]PMrover2' | awk '{print $2}') &
+		sudo kill $(ps aux | grep '[A]rduPlane' | awk '{print $2}') &
+		sudo kill $(ps aux | grep '[A]rduCopter-quad' | awk '{print $2}') &
+		sudo kill $(ps aux | grep '[A]rduCopter-tri' | awk '{print $2}') &
+		sudo kill $(ps aux | grep '[A]rduCopter-hexa' | awk '{print $2}') &
+		sudo kill $(ps aux | grep '[A]rduCopter-y6' | awk '{print $2}') &
+		sudo kill $(ps aux | grep '[A]rduCopter-octa' | awk '{print $2}') &
+		sudo kill $(ps aux | grep '[A]rduCopter-octa-quad' | awk '{print $2}') &
+		sudo kill $(ps aux | grep '[A]rduCopter-heli' | awk '{print $2}') &
+		sudo kill $(ps aux | grep '[A]rduCopter-single' | awk '{print $2}') &
+	;;
+
+
+#	selection 6 Reboot Pi now
+6)	clear
+	sudo reboot -n
+	exit 0
+	;;
+
+#	selection 7 Shutdown Pi Now
+7)
+	clear
+	sudo shutdown now
+	exit 0
+	;;
+
+##***APM SETUP***
+##
+##a) Download APM
+##b) Install APM
+##c) Create APM.sh
+##d) Edit APM.sh
+##e) Edit rc.local
+##f) Create off-button-py
+##g) Edit Cron
+##
+##
+
+#	selection a download APM installer
+a)
+	clear
+	echo "Downloading APM, this might take a few minutes."
+	sleep 2s
+	wget 'https://files.emlid.com/apm/apm.deb' -O apm.deb
+	;;
+
+#	selection b install APM software
+b)
+	clear
+	echo "Installing APM, this might take a few minutes."
+	sleep 1s
+	sudo dpkg -i apm.deb
+	;;
+
+#	selection c create APM.sh startup script
+c)
+	clear
+	echo " Type in your plane model from the selection below. "
+	echo " "
+	echo "	APMrover2"
+	echo "	ArduPlane"
+	echo "	ArduCopter-quad"
+	echo "	ArduCopter-tri"
+	echo "	ArduCopter-hexa"
+	echo "	ArduCopter-y6"
+	echo "	ArduCopter-octa"
+	echo "	ArduCopter-octa-quad"
+	echo "	ArduCopter-heli"
+	echo "	ArduCopter-single"
+	echo " "
+	read PlaneMode
+	clear
+	echo "Type in your Controller/Mission Planner IP Adress."
+	echo " "
+	read PlaneIP
+
+	echo "creating file APM.sh"
+	echo "#!/bin/bash" > /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# Supported vehicle types are:" >> /$HOME/APM.sh
+	echo "#	APMrover2" >> /$HOME/APM.sh
+	echo "#	ArduPlane" >> /$HOME/APM.sh
+	echo "#	ArduCopter-quad" >> /$HOME/APM.sh
+	echo "#	ArduCopter-tri" >> /$HOME/APM.sh
+	echo "#	ArduCopter-hexa" >> /$HOME/APM.sh
+	echo "#	ArduCopter-y6" >> /$HOME/APM.sh
+	echo "#	ArduCopter-octa" >> /$HOME/APM.sh
+	echo "#	ArduCopter-octa-quad" >> /$HOME/APM.sh
+	echo "#	ArduCopter-heli" >> /$HOME/APM.sh
+	echo "#	ArduCopter-single" >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# To run APM binary type the following in your RPi's console" >> /$HOME/APM.sh
+	echo "# (change ArduCopter-quad to your vehicle type):" >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# sudo ArduCopter-quad -A udp:192.168.1.2:14550" >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# Where 192.168.1.2 is the IP address of the device with the" >> /$HOME/APM.sh
+	echo "# Ground Control Station - your laptop, smartphone etc." >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# Arguments specify serial ports (TCP or UDP can be used instead of serial ports) :" >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# -A is for primary telemetry" >> /$HOME/APM.sh
+	echo "# -B is for external GPS" >> /$HOME/APM.sh
+	echo "# -C is for secondary telemetry (it can be used without primary telemetry)" >> /$HOME/APM.sh
+	echo "# -E is for secondary external GPS" >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# When using UART for telemetry please note that default baud rates are: 115200 for primary" >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# (-A) 57600 for secondary" >> /$HOME/APM.sh
+	echo "# (-C) 3DR Radios are configured for 57600 by default, so te simplest way to" >> /$HOME/APM.sh
+	echo "#      connect over them is to run with -C option." >> /$HOME/APM.sh
+	echo "# If you would like to transfer telemetry over the UART port on Navio you can specify it like this:" >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# sudo ArduCopter-quad -C /dev/ttyAMA0" >> /$HOME/APM.sh
+	echo "# UDP and serial telemetry can be used simultaneously like this:" >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# sudo ArduCopter-quad -A udp:192.168.1.2:14550 -C /dev/ttyAMA0" >> /$HOME/APM.sh
+	echo "# " >> /$HOME/APM.sh
+	echo "# APM # APM Planner is a ground station software for APM. It can be downloaded from the ardupilot.com" >> /$HOME/APM.sh
+	echo "# http://ardupilot.com/downloads/?category=35" >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# MAVProxy" >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# MAVProxy is a console-oriented ground station software written in Python that can be used standalone" >> /$HOME/APM.sh
+	echo "# or together with APM Planner. It’s well suited for advanced users and developers." >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# To install MAVProxy use Download and Installation instructions." >> /$HOME/APM.sh
+	echo "# http://dronecode.github.io/MAVProxy/html/getting_started/download_and_installation.html" >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# To run it specify the --master port, which can be serial, TCP or UDP. It also can perform data" >> /$HOME/APM.sh
+	echo "# passthrough using --out option." >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "# mavproxy.py --master 192.168.1.2:14550 --console" >> /$HOME/APM.sh
+	echo "#" >> /$HOME/APM.sh
+	echo "" >> /$HOME/APM.sh
+	echo "sudo "$PlaneMode" -A udp:"$PlaneIP":14550 -C /Dev/ttyAMA0 > /home/pi/"$PlaneMode"_Startup_Log &" >> /$HOME/APM.sh
+	sudo chmod 755 /$HOME/APM.sh
+	clear
+	echo " Add ./home/pi/APM.sh to your rc.local file above the line exit 0"
+	echo ""
+	;;
+
+#	selection d edit APM.sh
+d)
+	clear
+	sudo pico /$HOME/APM.sh
+	;;
+
+
+#	selection e edit rc.local for startup funtions
+e)
+	clear
+	sudo pico /etc/rc.local
+	;;
+#	selection F off-button-py
+f)
+	clear
+		echo " We will creat a script to shutdown the Pi by button."
+		echo " When wireing your button you may wish it include a 1k resistor."
+		echo ""
+		echo ""
+		echo " Please enter the pin for the shutdown button."
+		echo " Default for Navio Plus is 12 for the Aux pin set."
+	read AuxPin
+	clear
+		echo " Making /home/pi/off-button-py"
+		echo ""
+		echo " You will need to add it to cron by the following instructions..."
+		echo ""
+		echo ' To open Cron type "sudo crontab -e" '
+		echo ""
+		echo ' Add to the end of Cron "@reboot sudo python /home/pi/off-button-py" '
+		echo ""
+		echo '#!/bin/python' >/home/pi/off-button-python
+		echo '#Use this script at your own risk' >>/home/pi/off-button-python
+		echo '' >>/home/pi/off-button-python
+		echo 'import RPi.GPIO as GPIO' >>/home/pi/off-button-python
+		echo 'import os' >>/home/pi/off-button-python
+		echo '' >>/home/pi/off-button-python
+		echo 'gpio_pin_number='$AuxPin >>/home/pi/off-button-python
+		echo '#The line should look something like this e.g. "gpio_pin_number=12"' >>/home/pi/off-button-python
+		echo '' >>/home/pi/off-button-python
+		echo 'GPIO.setmode(GPIO.BCM)' >>/home/pi/off-button-python
+		echo '#Use BCM pin numbering (i.e. the GPIO number, not pin number)' >>/home/pi/off-button-python
+		echo '#WARNING: this will change between Pi versions' >>/home/pi/off-button-python
+		echo '' >>/home/pi/off-button-python
+		echo 'try:' >>/home/pi/off-button-python
+		echo '   GPIO.wait_for_edge(gpio_pin_number, GPIO.FALLING)' >>/home/pi/off-button-python
+		echo '    #Use falling edge detection to see if pin is pulled ' >>/home/pi/off-button-python
+		echo '    #low to avoid repeated polling' >>/home/pi/off-button-python
+		echo '    os.system("sudo shutdown -h now")' >>/home/pi/off-button-python
+		echo '    #Send command to system to shutdown' >>/home/pi/off-button-python
+		echo 'except:' >>/home/pi/off-button-python
+		echo '    pass' >>/home/pi/off-button-python
+		echo '' >>/home/pi/off-button-python
+		echo 'GPIO.cleanup()' >>/home/pi/off-button-python
+		echo '#Revert all GPIO pins to their normal states (i.e. input = safe)' >>/home/pi/off-button-python
+	echo "complete"
+	;;
+
+#	selection g Edit Cron
+g)
+	clear
+	echo 'Please add @reboot sudo python /home/pi/off-button-py '
+	echo 'at the end... '
+	sleep 5s
+	sudo crontab -e
+	;;
+
+##***WiFi SETUP***
+##
+##m) List USB Devices
+##n) List WiFi Networks
+##o) Connect to WiFi
+##p) Clear WiFi
+##r) Enable WiFi
+##s) Disable WiFWi
+##t) Edit WiFi Network
+##
+##
+
+#	Selection m List USB Devices
+m)
+	clear
+	sudo lsusb
+	;;
+
+#	selection n list WiFi networks SSID
+n)
+	clear
+	sudo iwlist wlan0 scan | grep ESSID
+	;;
+
+
+#	selection o add too WiFi
+o)
+	clear
+	sudo iwlist wlan0 scan | grep ESSID
+	echo ""
+	echo "Please pe the SSID of the network you wish to join."
+	echo "This is case sensitive."
+	read MySSID
+	echo ""
+	echo "Please enter the password for network "$MySSID"."
+	read MySSIDPass
+	clear
+
+	echo " Adding to WiFi"
+
+	sleep 2s
+		sudo echo 'ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev' > /$HOME/wpa_supplicant.conf
+		sudo echo 'update_config=1' >>/$HOME/wpa_supplicant.conf
+		sudo echo '' >> /$HOME/wpa_supplicant.conf
+		sudo echo 'network={' >> /$HOME/wpa_supplicant.conf
+		sudo echo '	ssid="'$MySSID'"' >> /$HOME/wpa_supplicant.conf
+		sudo echo '	psk="'$MySSIDPass'"' >> /$HOME/wpa_supplicant.conf
+		sudo echo '}' >> /$HOME/wpa_supplicant.conf
+		sudo cp /$HOME/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+		sudo rm /$HOME/wpa_supplicant.conf
+
+		sudo ifdown wlan0
+		sudo ifup wlan0
+		clear
+
+		echo "Completed"
+	;;
+
+#	selection p clear WiFi
+p)
+	echo " Clearing WiFi"
+
+	sleep 2s
+		sudo echo 'ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev' > /$HOME/wpa_supplicant.conf
+		sudo echo 'update_config=1' >>/$HOME/wpa_supplicant.conf
+		sudo echo '' >> /$HOME/wpa_supplicant.conf
+		sudo echo 'network={' >> /$HOME/wpa_supplicant.conf
+		sudo echo '	ssid="Enter SSID HERE"' >> /$HOME/wpa_supplicant.conf
+		sudo echo '	psk="Enter Pass Phrase Here"' >> /$HOME/wpa_supplicant.conf
+		sudo echo '}' >> /$HOME/wpa_supplicant.conf
+		sudo cp /$HOME/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+		sudo rm /$HOME/wpa_supplicant.conf
+
+		sudo ifdown wlan0
+		sudo ifup wlan0
+	clear
+
+		echo "Completed"
+	;;
+
+#	selection r Enable WiFi settings
+r)
+	clear
+	sudo ifup wlan0
+	;;
+
+#	selection s Disable WiFi settings
+s)
+	clear
+	echo"WARNING!!! This will disconnect all WiFi Networks!"
+	echo ""
+	echo "Do you wish to Continue? (y/n)"
+	read continue
+			case $continue in
+				y)
+					sudo ifdown wlan0
+					;;
+				n)
+					echo "returning to main menu"
+					;;
+				*)
+					echo "invalid selection - returning to main menu"
+					;;
+			esac
+	;;
+
+#	selection t Edit WiFi network settings
+t)
+	clear
+	sudo pico /etc/wpa_supplicant/wpa_supplicant.conf
+	;;
+
+
+
+
+#	selection x . . . exit
+x)
+	clear
+		echo '*=----____-------------=* ***************************'
+		echo '*=----\ _ \-___--------=* * Navio Plus Support Menu *'
+		echo '*=----//_/// _//\_/\---=* * version 1.10a 7/31/2016 *'
+		echo '*=---/___//_/--\___/---=* ***************************'
+		echo ''
+		echo 'If you find this useful please send a small donation'
+		echo 'to memphisartguy@yahoo.com via PayPal. '
+		echo 'Feel free to send suggestions and comments as well.'
+		echo ''
+		echo ''
+	sleep 2s
+	exit 0
+	;;
+
+
+q)
+	clear
+		echo '*=----____-------------=* ***************************'
+                echo '*=----\ _ \-___--------=* * Navio Plus Support Menu *'
+                echo '*=----//_/// _//\_/\---=* * version 1.10a 7/31/2016 *'
+                echo '*=---/___//_/--\___/---=* ***************************'
+		echo ''
+		echo 'If you find this useful please send a small donation'
+		echo 'to memphisartguy@yahoo.com via PayPal. '
+		echo 'Feel free to send suggestions and comments as well.'
+		echo ''
+		echo ''
+	sleep 2s
+	exit 0
+;;
+
+
+
+#	defualt case
+	*)
+	clear
+	echo "invalid choice. Try again."
+	sleep 1s
+	;;
+
+#	end case
+esac
+
+#pause before redisplaying menu
+	echo""
+	echo -n "Press Return to continue"
+	read hold
+
+
+#	end the while done
+done
