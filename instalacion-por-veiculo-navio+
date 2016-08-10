@@ -18,11 +18,7 @@ sudo chmod 775 interfaces
 
 sudo chmod 775 actualizacion2.sh
 
-sudo chmod 775 actualizacion
-
 sudo cp actualizacion2.sh /home/pi
-
-sudo cp actualizacion /home/pi
 
 cd /etc/network
 
@@ -38,9 +34,18 @@ cd
 
 cd tipos-instalacion-master
 sudo chmod 775 permisos.sh
+sudo chmod 775 copiar.sh
 sudo ./permisos.sh
 sudo ./copiar.sh
 cd
+sudo wget https://github.com/5jjCopter/instalar/archive/master.zip
+sudo unzip master.zip
+cd instalar-master
+sudo chmod 775 Instalar-solo-video
+sudo ./instalar-solo-video
+cd
+sudo rm master.zip
+sudo rm -rf instalar-master
 # QUITAR (#) DEL VEICULO QUE QUIERA INSTALAR
 
 #sudo systemctl daemon-reload & sudo systemctl enable 
@@ -49,7 +54,7 @@ cd
 #sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-hexa
 #sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-octa
 #sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-octa-quad
-sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-quad
+#sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-quad
 #sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-tri
 #sudo systemctl daemon-reload & sudo systemctl enable ArduCopter-y6	
 #sudo systemctl daemon-reload & sudo systemctl enable ArduPlane
