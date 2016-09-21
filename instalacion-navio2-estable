@@ -4,9 +4,19 @@ sudo wget https://github.com/5jjCopter/navio/archive/master.zip
 
 sudo unzip master.zip
 
+cd
+
+cd /boot
+
+sudo rm config.txt
+
+cd
+
 cd navio-master
 
 sudo chmod 775 interfaces
+
+sudo chmod 775 config.txt
 
 sudo cp ardupilot.service /lib/systemd/system
 
@@ -19,6 +29,8 @@ sudo cp video /home/pi
 sudo cp temp.py /home/pi
 
 sudo cp actualizacion2.sh /home/pi
+
+sudi cp config.txt /boot
 
 cd /etc/network
 
