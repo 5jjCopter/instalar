@@ -30,7 +30,7 @@ sudo cp temp.py /home/pi
 
 sudo cp actualizacion2.sh /home/pi
 
-sudi cp config.txt /boot
+sudo cp config.txt /boot
 
 cd /etc/network
 
