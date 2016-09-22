@@ -18,13 +18,13 @@ cd
 
 cd navio-master
 
-sudo chmod 775 wpa-supplicant.conf
+sudo chmod 775 wpa_supplicant.conf
 
 sudo chmod 775 interfaces
 
 sudo chmod 775 raspi-blacklist.conf
 
-sudo cp wpa-supplicant.conf /etc/wpa-supplicant
+sudo cp wpa_supplicant.conf /etc/wpa_supplicant
 
 sudo cp ardupilot.service /lib/systemd/system
 
