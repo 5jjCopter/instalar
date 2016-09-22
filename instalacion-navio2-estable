@@ -8,7 +8,7 @@ cd
 
 cd /etc/wpa_supplicant
 
-sudo rm wpa-supplicant.conf
+sudo rm wpa_supplicant.conf
 
 cd /etc/modprobe.d
 
