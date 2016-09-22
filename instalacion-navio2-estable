@@ -6,6 +6,10 @@ sudo unzip master.zip
 
 cd
 
+cd /etc/wpa_supplicant
+
+sudo rm wpa-supplicant.conf
+
 cd /etc/modprobe.d
 
 sudo rm raspi-blacklist.conf
@@ -14,9 +18,13 @@ cd
 
 cd navio-master
 
+sudo chmod 775 wpa-supplicant.conf
+
 sudo chmod 775 interfaces
 
 sudo chmod 775 raspi-blacklist.conf
+
+sudo cp wpa-supplicant.conf /etc/wpa-supplicant
 
 sudo cp ardupilot.service /lib/systemd/system
 
