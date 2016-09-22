@@ -6,12 +6,6 @@ sudo unzip master.zip
 
 cd
 
-cd /boot
-
-sudo rm config.txt
-
-cd
-
 cd /etc/modprobe.d
 
 sudo rm raspi-blacklist.conf
@@ -37,8 +31,6 @@ sudo cp video /home/pi
 sudo cp temp.py /home/pi
 
 sudo cp actualizacion2.sh /home/pi
-
-sudo cp config.txt /boot
 
 sudo cp raspi-blacklist.conf /etc/modprobe.d
 
