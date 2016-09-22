@@ -16,8 +16,6 @@ cd navio-master
 
 sudo chmod 775 interfaces
 
-sudo chmod 775 config.txt
-
 sudo chmod 775 raspi-blacklist.conf
 
 sudo cp ardupilot.service /lib/systemd/system
