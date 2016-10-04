@@ -1,16 +1,26 @@
 #!/bin/sh
 
-sudo apt-get update
-
-sudo apt-get dist-upgrade
-
 sudo apt-get install apm-navio-beta
 
 sudo wget https://github.com/5jjCopter/navio/archive/master.zip
 
 sudo unzip master.zip
 
+cd
+
+cd /etc/wpa_supplicant
+
+sudo rm wpa_supplicant.conf
+
+cd
+
 cd navio-master
+
+sudo chmod 775 wpa_supplicant.conf
+
+sudo chmod 775 interfaces
+
+sudo cp wpa_supplicant.conf /etc/wpa_supplicant
 
 sudo cp ardupilot.service /lib/systemd/system
 
@@ -20,9 +30,15 @@ sudo cp ardupilot /home/pi
 
 sudo cp video /home/pi
 
-sudo cp actualizacion /home/pi
-
 sudo cp temp.py /home/pi
+
+cd /etc/network
+
+sudo rm interfaces
+
+cd /home/pi/navio-master
+
+sudo cp interfaces /etc/network
 
 cd /home/pi
 
@@ -32,21 +48,8 @@ sudo chmod 775 video
 
 sudo chmod 775 temp.py
 
-sudo chmod 775 actualizacion
-
-sudo systemctl daemon-reload
-
-sudo systemctl enable video
-
 sudo systemctl daemon-reload
 
 sudo systemctl enable ardupilot
 
-cd
-
-sudo rm master.zip
-
-sudo reboot
-
-cd
 
