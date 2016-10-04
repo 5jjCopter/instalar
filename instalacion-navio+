@@ -54,4 +54,10 @@ sudo systemctl daemon-reload
 
 sudo systemctl enable ardupilot
 
+sudo rm master.zip
+
+sudo rm -rf navio-master
+
+sudo reboot
+
 
