@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sudo apt-get update && sudo apt-get dist-upgrade
+
 sudo apt-get install apm-navio-beta
 
 sudo wget https://github.com/5jjCopter/navio/archive/master.zip
