@@ -30,9 +30,17 @@ sudo cp ardupilot.service /lib/systemd/system
 
 sudo cp video.service /lib/systemd/system
 
+sudo cp video-mobil.service /lib/systemd/system
+
+sudo cp grabar-video-mobil.service /lib/systemd/system
+
 sudo cp ardupilot /home/pi
 
 sudo cp video /home/pi
+
+sudo cp video-mobil /home/pi
+
+sudo cp grabar-video-mobil /home/pi
 
 sudo cp temp.py /home/pi
 
@@ -53,6 +61,10 @@ cd /home/pi
 sudo chmod 775 ardupilot
 
 sudo chmod 775 video
+
+sudo chmod 775 video-mobil
+
+sudo chmod 775 grabar-video-mobil
 
 sudo chmod 775 temp.py
 
