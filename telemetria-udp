@@ -1,0 +1,8 @@
+sudo wget https://github.com/5jjCopter/navio/archive/master.zip
+sudo unzip master.zip
+cd navio-master
+sudo cp mavproxy.sh /home/pi
+sudo chmod 775 mavproxy.sh
+cd 
+sudo rm master.zip
+sudo rm -rf navio-master
