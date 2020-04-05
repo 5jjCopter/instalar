@@ -6,6 +6,8 @@ cd navio-master
 
 sudo chmod 775 interfaces
 
+sudo chmod 775 dhcpcd.conf
+
 sudo chmod 775 video
 
 sudo chmod 775 video-mobil
@@ -17,6 +19,14 @@ sudo cp video /home/pi
 sudo cp video.service /lib/systemd/system
 
 sudo cp video-mobil.service /lib/systemd/system
+
+cd /etc
+
+sudo rm dhcpcd.conf
+
+cd /home/pi/navio-master
+
+sudo cp dhcpcd.conf /etc
 
 cd /etc/network
 
