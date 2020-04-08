@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 sudo wget https://github.com/5jjCopter/navio/archive/master.zip && sudo unzip master.zip && cd navio-master && sudo chmod 775 interfaces !* dhcpcd.conf !* video !* video-mobil
 
