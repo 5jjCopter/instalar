@@ -6,9 +6,7 @@ sudo cp video-mobil /home/pi ; sudo cp video /home/pi ; sudo cp video.service /l
 
 cd /home/pi/navio-master ; sudo cp dhcpcd.conf /etc ; sudo cp interfaces /etc/network
 
-cd
-
-sudo rm -rf master.zip ; sudo rm -rf navio-master
+cd /home/pi ; sudo rm -rf master.zip !* navio-master
 
 sudo systemctl daemon-reload ; sudo systemctl enable video
 
