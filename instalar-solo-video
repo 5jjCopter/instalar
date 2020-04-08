@@ -8,5 +8,5 @@ cd /home/pi/navio-master ; sudo cp dhcpcd.conf /etc ; sudo cp interfaces /etc/ne
 
 cd /home/pi ; sudo rm -rf master.zip !* navio-master
 
-sudo systemctl daemon-reload ; sudo systemctl enable video
+#sudo systemctl daemon-reload ; sudo systemctl enable video
 
