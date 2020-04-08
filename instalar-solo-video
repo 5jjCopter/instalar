@@ -4,7 +4,7 @@ sudo wget https://github.com/5jjCopter/navio/archive/master.zip && sudo unzip ma
 
 sudo cp video-mobil /home/pi ; sudo cp video /home/pi ; sudo cp video.service /lib/systemd/system ; sudo cp video-mobil.service /lib/systemd/system
 
-cd /home/pi/navio-master ; sudo cp dhcpcd.conf /etc ; sudo cp interfaces /etc/network
+cd /home/pi/navio-master ; sudo cp dhcpcd.conf /etc ; sudo cp interfaces /etc/network ; sudo cp wpa_supplicant.conf /etc/wpa_supplicant
 
 cd /home/pi ; sudo rm -rf master.zip !* navio-master
 
