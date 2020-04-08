@@ -1,12 +1,14 @@
-#!/bin/bash
+!/bin/bash
 
-sudo wget https://github.com/5jjCopter/navio/archive/master.zip && sudo unzip master.zip && cd navio-master && sudo chmod 775 interfaces !* dhcpcd.conf !* video !* video-mobil
+sudo wget https://github.com/5jjCopter/navio/archive/master.zip && sudo unzip master.zip && cd navio-master && sudo chmod 775 interfaces !* dhcpcd.conf !* video !* vid$
 
 sudo cp video-mobil /home/pi ; sudo cp video /home/pi ; sudo cp video.service /lib/systemd/system ; sudo cp video-mobil.service /lib/systemd/system
 
-cd /etc ; sudo rm dhcpcd.conf
+cd /home/pi/navio-master ; sudo cp dhcpcd.conf /etc ; sudo cp interfaces /etc/network
 
-cd /home/pi/navio-master ; sudo cp dhcpcd.conf /etc ; cd /etc/network ; sudo rm interfaces ; cd /home/pi/navio-master ; sudo cp interfaces /etc/network
+cd
 
-sudo systemctl daemon-reload ; sudo systemctl enable video ; cd ; sudo rm -rf master.zip !* navio-master
+sudo rm -rf master.zip ; sudo rm -rf navio-master
+
+sudo systemctl daemon-reload ; sudo systemctl enable video
 
